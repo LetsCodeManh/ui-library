@@ -1,10 +1,11 @@
+
 name: Deploy Storybook to GitHub Pages
 
 on:
   push:
     branches: [main]
 
-permission:
+permissions:
   pages: write
   id-token: write
 
@@ -12,27 +13,28 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
-
-      - uses: pnpm/actions-setup@v2
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 8
-
+          
       - name: Install dependencies
-        run: pnpm Install
-
+        run: pnpm install
+        
       - name: Build Storybook
-        run: pnpm build-Storybook
-
+        run: pnpm build-storybook
+        
       - name: Setup Pages
         uses: actions/configure-pages@v3
-
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: "./storybook-static"
-
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
