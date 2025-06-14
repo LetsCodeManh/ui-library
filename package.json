@@ -28,7 +28,9 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "vitest"
+    "test": "vitest",
+    "test:ci": "vitest run --environment=jsdom",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "react": "^19.1.0",
