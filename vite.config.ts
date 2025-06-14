@@ -10,6 +10,7 @@ export default defineConfig({
     react(),
     dts({
       insertTypesEntry: true,
+      tsconfigPath: "tsconfig.lib.json",
     }),
   ],
   build: {
@@ -32,6 +33,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    // setupFiles: "./src/tests/setup.ts",
+    setupFiles: "./src/tests/setup.ts",
   },
 });
